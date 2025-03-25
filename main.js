@@ -12,22 +12,18 @@ hearts.forEach(heart => {
 function handleHeartClick(heart) {
   mimicServerCall()
     .then(() => {
-      // Server request was successful
       if (heart.textContent === "♡") {
-        heart.textContent = "♥"; // Change to full heart
-        heart.classList.add("activated-heart"); // Make it red
+        heart.textContent = "♥";
+        heart.classList.add("activated-heart");
       } else {
-        heart.textContent = "♡"; // Change back to empty heart
-        heart.classList.remove("activated-heart"); // Remove red color
+        heart.textContent = "♡";
+        heart.classList.remove("activated-heart");
       }
     })
     .catch(() => {
-      // Server request failed - Show error modal
       const errorModal = document.getElementById("modal");
-      errorModal.classList.remove("hidden"); // Show error modal
+      errorModal.classList.remove("hidden");
       errorModal.querySelector("#modal-message").textContent = "Server error. Try again!";
-
-      // Hide error modal after 3 seconds
       setTimeout(() => {
         errorModal.classList.add("hidden");
       }, 3000);
